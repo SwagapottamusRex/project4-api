@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 import dj_database_url
 load_dotenv()
 
-ENV = str(os.getnv('ENVIRONMENT', 'DEV'))
+ENV = str(os.getenv('ENVIRONMENT', 'DEV'))
 
 
 
