@@ -173,6 +173,7 @@ REST_FRAMEWORK = {
     ],
 }
 
+CSRF_TRUSTED_ORIGINS = ['https://pixelprojectapp.herokuapp.com']
 
 AUTH_USER_MODEL = 'jwt_auth.CustomUser'
 
