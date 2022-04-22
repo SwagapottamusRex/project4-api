@@ -9,6 +9,10 @@ psycopg2-binary = "*"
 django-colorfield = "*"
 djangorestframework = "*"
 pyjwt = "*"
+python-dotenv = "*"
+dj-database-url = "*"
+django-on-heroku = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
