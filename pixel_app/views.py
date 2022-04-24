@@ -97,7 +97,7 @@ class UpdateThreadView(APIView):
   permission_classes = [IsAuthenticated,]
   def put(self, request, pk):
       thread_to_update = Thread.objects.get(pk=pk)
-      if (thread_to_update.community.id != request.user.id):
+      if (thread_to_update.id != request.user.id):
         return Response(status=status.HTTP_403_FORBIDDEN)
       
       thread_serializer = ThreadSerializer(thread_to_update, data=request.data)
