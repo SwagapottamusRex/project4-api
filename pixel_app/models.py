@@ -27,6 +27,7 @@ class Community(models.Model):
     return f'creator: {self.creator}...Community Name: {self.name}'
 
 class Comment(models.Model):
+  thread = models.ForeignKey('Thread', related_name='thread', on_delete=models.CASCADE, null=True, blank=True)
   text = models.CharField(max_length=250)
   creator_of_comment = models.ForeignKey(CustomUser, related_name='creator', on_delete=models.CASCADE, null=True)
   def __str__(self):

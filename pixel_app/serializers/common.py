@@ -45,7 +45,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class PopulatedCommentSerializer(CommentSerializer):
-  creator_of_comment = OwnerSerializer(many=False)
+  creator_of_comment = OwnerSerializer()
 
 # class PopulatedCommentSerializerCreate(CommentSerializer):
 #   creator_of_comment = PopulatedCommentSerializer()
@@ -53,13 +53,13 @@ class PopulatedCommentSerializer(CommentSerializer):
 
 
 class PopulatedCommunitySerializer(CommunitySerializer):
-  creator = OwnerSerializer(many=False)
+  creator = OwnerSerializer()
 
 
 class PopulatedThreadSerializer(ThreadSerializer):
-  community = CommunitySerializer(many=False)
+  community = PopulatedCommunitySerializer(many=False)
   #! many = True bugging out!!!
-  reply_thread = CommentSerializer(many=True)
+  reply_thread = PopulatedCommentSerializer()
 
   # queryset = Comment.objects.all()
   # reply_thread = CommentSerializer(queryset, many=True)

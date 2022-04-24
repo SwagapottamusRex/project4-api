@@ -87,7 +87,7 @@ class DetailOwnerView(RetrieveUpdateDestroyAPIView):
 
 class ListThreadsView(ListAPIView):
   queryset = Thread.objects.all()
-  serializer_class = PopulatedThreadSerializer
+  serializer_class = ThreadSerializer
 
 class DetailThreadView(RetrieveDestroyAPIView):
   queryset = Thread.objects.all()
@@ -97,8 +97,9 @@ class UpdateThreadView(APIView):
   permission_classes = [IsAuthenticated,]
   def put(self, request, pk):
       thread_to_update = Thread.objects.get(pk=pk)
-      if (thread_to_update.id != request.user.id):
-        return Response(status=status.HTTP_403_FORBIDDEN)
+      print('thead to update', thread_to_update.id)
+      # if (thread_to_update.id != request.user.id):
+      #   return Response(status=status.HTTP_403_FORBIDDEN)
       
       thread_serializer = ThreadSerializer(thread_to_update, data=request.data)
       if thread_serializer.is_valid():
@@ -177,6 +178,7 @@ class DetailCommentView(RetrieveDestroyAPIView):
 class CreateCommentView(APIView):
   permission_classes = [IsAuthenticated,]
   def post(self, request):
+        
 
 
         request.data['creator_of_comment'] = request.user.id
