@@ -11,7 +11,7 @@ class Color(models.Model):
 class Pixel(models.Model):
   x_axis = models.IntegerField(default= None)
   y_axis = models.IntegerField(default=None)
-  color = models.ForeignKey(Color, related_name= 'color', on_delete= models.PROTECT, null=False)
+  color = models.ForeignKey(Color, related_name= 'color', on_delete= models.PROTECT, null=False, default=2)
   current_owner = models.ForeignKey(CustomUser, related_name='pixel', on_delete=models.PROTECT, null=True)
   number_of_times_changed = models.IntegerField(default=None)
   def __str__(self):
