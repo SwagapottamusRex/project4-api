@@ -8,11 +8,10 @@ class Color(models.Model):
   def __str__(self):
     return f'Color: {self.color_name}'
 
-# Create your models here.
 class Pixel(models.Model):
   x_axis = models.IntegerField(default= None)
   y_axis = models.IntegerField(default=None)
-  color = models.ForeignKey(Color, related_name= 'color', on_delete= models.PROTECT, null=True)
+  color = models.ForeignKey(Color, related_name= 'color', on_delete= models.PROTECT, null=False)
   current_owner = models.ForeignKey(CustomUser, related_name='pixel', on_delete=models.PROTECT, null=True)
   number_of_times_changed = models.IntegerField(default=None)
   def __str__(self):
